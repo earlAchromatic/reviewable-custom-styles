@@ -1,0 +1,469 @@
+:root,
+::after,
+::before {
+    --bg: #5a5a5a; /* replaces the light grey */
+    --bg-2: #464646; /*  replaces white */ /*#8d8d8d*/
+      $bg-2: #464646;
+    --diff-add: rgba(91, 220, 114, 0.208);
+    --diff-remove: rgba(240, 92, 92, 0.208);
+    --diff-bg: #44444424;
+    --revision-modified: #5c5c5b6e; /* #625f567d; */
+    --revision-added: #c1fbcd;
+    --revision-removed: #ffb8b8;
+    --text: white;
+    --gradient: linear-gradient(90deg, var(--bg-2) 0%, var(--bg) 20%,var(--bg) 80%, var(--bg-2) 100%);
+    --contrast: ; /* eg contrast(2) */
+}
+
+.review-page {
+    background-color: var(--bg);
+}
+
+.review-page .review {
+    &-component{
+        background-color: var(--bg);
+        color: var(--text);
+        .sheet.filler {
+            background-color: var(--bg-2);
+        }
+        .files.content {
+            background-color: var(--bg);
+            .file.root {
+                background-color: var(--bg-2);
+                color: var(--text);
+                .file {
+                    .file.top.edge {
+                        background-color: var(--bg);
+                        .file.left.filler,
+                        .file.right.filler {
+                            background-color: var(--bg-2);
+                        }
+                        .file.left.filler:after,
+                         .file.right.filler:after {
+                            background-color: var(--bg);
+                        }
+                        .file.title {
+                            background-color: var(--bg-2);
+                            .filename.cell.header .path {
+                                color: var(--text);
+                            }
+                        }
+                        .file.title:after {
+                            border-bottom: 1px solid var(--bg-2);
+                        }
+                    }
+                    .special.message {
+                        .ui.icon.message {
+                            color: var(--text);
+                        }
+                    }
+                    .diff-area {
+                        background-color: var(--bg-2);
+                    }
+                    .file.diff {
+                        background-color: var(--bg-2);
+                        .collapsed {
+                            color: var(--text);
+                            .relative {
+                                background: var(--bg);
+                            }
+                            /* This is one spot the variable doesn't adjust */
+                            /* https://yoksel.github.io/url-encoder/ to convert var(--bg-2) */
+                            .top.wavy.edge {
+                                /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 16' preserveAspectRatio='none'%3E%3Cpath d='M0 0 m 0 11 q 150 5, 300 0 t 300 0 m 0 -11' stroke-width='5px' stroke='rgba(0, 0, 0, 0.03)' fill='transparent'/%3E%3Cpath d='M0 0 l 0 11 q 150 5, 300 0 t 300 0 l 0 -11' fill='%238d8d8d'/%3E%3Cpath d='M0 0 m 0 11 q 150 5, 300 0 t 300 0 m 0 -11' stroke='%23e6e6e6' fill='transparent'/%3E%3C/svg%3E"); */
+                                background-image: svg-load('svg/top-wavy-edge.svg', fill: $bg-2);
+                            }
+                            .bottom.wavy.edge {
+                               /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 14' preserveAspectRatio='none'%3E%3Cpath d='M0 14 l 0 -11 q 150 -5, 300 0 t 300 0 l 0 11' fill='%238d8d8d'/%3E%3Cpath d='M0 14 m 0 -11 q 150 -5, 300 0 t 300 0 m 0 11' stroke='%23e6e6e6' fill='transparent'/%3E%3C/svg%3E"); */
+                               background-image: svg-load('svg/bottom-wavy-edge.svg', fill: $bg-2);
+                            }
+                            .expand.link {
+                                background-color: var(--bg-2);
+                                color: var(--text);
+                                .blocker {
+                                    background-color: var(--bg-2);
+                                }
+                                .text {
+                                    color: var(--text);
+                                }
+                            }
+                            .declaration.include {
+                                background-color: var(--bg-2);
+                                color: var(--text);
+                                filter: contrast(1);
+                            }
+                            .settings .text {
+                                color: var(--text);
+                                .lead {
+                                    color: var(--text);
+                                }
+                            }
+                        }
+                        .expanded.region {
+                            .diff.line.dummy, .diff.line {
+                                .line.wrapper.diffwidth {
+                                    background-color: var(--diff-bg);
+                                    .line.content {
+                                        background-color: var(--diff-bg);
+                                        color: var(--text);
+                                        filter: var(--contrast);
+                                    }
+                                }
+                            }
+                            .diff.line.dummy {
+                                .diffwidth.line.content.blank {
+                                    background-color: var(--bg-2)!important;
+                                }
+                            }
+                            .diff.line:not(.keep) {
+                                .line.wrapper.diffwidth {
+                                    background-color: var(--diff-bg);
+                                    .line.content {
+                                        background-color: var(--diff-bg);
+                                    }
+                                }
+                                .line.wrapper:not(.empty) {
+                                    .left.line.content {
+                                        background-color: var(--diff-remove);
+                                    }
+                                    .right.line.content {
+                                        background-color: var(--diff-add);
+                                    }
+                                }
+                            }
+                            .line.gutter {
+                                .ui.bare.icon.button {
+                                    background-color: var(--bg-2);
+                                    color: var(--text)!important;
+                                }
+                            }
+                        }
+                        .diff.line:not(.declaration) .empty.line.wrapper {
+                            .hljs {
+                                background-color: var(--bg-2);
+                            }
+                        }
+                    }
+                    
+                    .file.bottom.button {
+                        background-color: var(--bg-2)!important;
+                        color: var(--text)!important;
+                    }
+                }
+            }
+        }
+        .discussion.header {
+            background-color: var(--bg);
+            color: var(--text);
+            a {
+                color: var(--text);
+            }
+        }
+        .footer {
+            background-color: var(--bg);
+            color: var(--text);
+            .ui.checkbox label {
+                color: var(--text);
+            }
+            .ui.checkbox.slider:after {
+                background-color: var(--text);
+            }
+        }
+        .discussion.wrapper, .bottom.feedback.wrapper {
+            background-color: var(--bg-2);
+            color: var(--text);
+            .draft.bottom.tabular.menu {
+                background-color: var(--bg);
+                color: var(--text);
+                >.active.item {
+                    background-color: var(--bg);
+                    color: var(--text);
+                }
+                .button.item {
+                    color: var(--text)!important;
+                }
+                .cover.upload.icon {
+                    background-color: var(--bg);
+                }
+            }
+            .comment {
+                .markdown-body.text {
+                    color: var(--text);
+                }
+                .time.divider .text {
+                    background-color: var(--bg-2);
+                    color: var(--text);
+                }
+                .draft.ribbon.label {
+                    background-color: var(--bg);
+                }
+            }
+            .dropdown {
+                .item {
+                    color: var(--text);
+                }
+                .preface {
+                    background-color: var(--bg-2);
+                }
+                .multiselect__content-wrapper {
+                    background-color: var(--bg-2);
+                }
+            }
+            .showhide.old.comments {
+                background-color: var(--bg-2);
+                color: var(--text);
+            }
+            .ui.bare.icon.button,
+            .ui.basic.icon.button,
+            .ui.basic.button {
+                background-color: var(--bg-2);
+                color: var(--text)!important;
+                box-shadow: 0px 0px 0px 1px rgb(255 255 255 / 24%) inset;
+            }
+            .draft.display.textarea,
+            .draft.display.textarea .markdown-body {
+                color: var(--text);
+            }
+            .response.buttons {
+                > .ui {
+                    background-color: var(--bg);
+                    color: var(--text);
+                }
+                .response-input, .upload.area {
+                    background-color: var(--bg);
+                    color: var(--text);
+                }
+                .or:before {
+                    background-color: var(--bg-2);
+                    color: var(--text);
+                }
+                .or:after {
+                    border-top: 0.5em solid var(--bg-2);
+                    border-bottom: 0.5em solid var(--bg-2);
+                }
+            }
+            .separator {
+                background-color: var(--bg);
+                color: var(--text);
+                .icon.button {
+                    color: var(--text)!important;
+                }
+            }
+            .participants {
+                background-color: var(--bg-2);
+                .role {
+                    background-color: var(--bg-2);
+                }
+            }
+            .sentiments {
+                background-color: var(--bg);
+                color: var(--text);
+                .avatar.category a, 
+                .avatar.category a:visited, .empty {
+                    color: var(--text);
+                }
+            }
+            .draft.watermark {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='334' height='93' viewBox='-76 3 334 93'%3E%3Ctext style='font-family:DroidSans,sans-serif;font-size:48px;font-weight:800;stroke:none;fill:white;' opacity='0.05' transform='rotate(-20 275,0)'%3EDRAFT%3C/text%3E%3C/svg%3E");
+            }
+            .tip {
+                color: var(--text);
+            }
+            .code.wrapper {
+                filter: var(--contrast);
+            }
+        }
+        .bottom.feedback.wrapper {
+            background-color: var(--bg);
+            border: none;
+            .straight.bottom.edge:before {
+                background-color: var(--bg);
+            }
+            .draft.ribbon.label {
+                border: #ffffff36 1px solid;
+            }
+        }
+        .row.header.row, #file-matrix {
+            .revision.modified {
+                background-color: var(--revision-modified);
+                filter: var(--contrast);
+            }
+            .revision.added {
+                background-color: var(--revision-added);
+                .cell.reviewed.icon {
+                    color: var(--bg-2);
+                }
+            }
+            .revision.removed {
+                background-color: var(--revision-removed);
+                .cell.reviewed.icon {
+                    color: var(--bg-2);
+                }
+            }
+            td {
+                background-color: var(--bg-2);
+                color: var(--text);
+                .inner.revlabel {
+                    color: var(--text);
+                    filter: var(--contrast);
+                }
+                .reviewed.icon.others {
+                    color: var(--text);
+                    opacity: 0.5;
+                }
+            }
+            .prior.modified {
+                background-color: #5e5e5ea8;
+            }
+            .revision .watermark.icon {
+                opacity: 0.25;
+            }
+            .link.cell:hover, .filename.cell:hover + .reviewers {
+                background-color: var(--bg)!important;
+            }
+        }
+        .status.bar {
+            background-color: var(--bg-2);
+            color: var(--text);
+        }
+        .details {
+            color: var(--text);
+        }
+        .review-header.active .status.bar {
+            background-color: var(--bg-2);
+            color: var(--text);
+            .filename.cell.header .path {
+                color: var(--text);
+            }
+        }
+        .bounds.band {
+            color: #bea6ff;
+        }
+        .file.stub {
+            color: var(--text);
+        }
+        .state.ready .file.diff:not(.select) {
+            .diff.line:not(.declaration) .line.wrapper:not(.empty) .line.content:hover {
+                background-color: var(--bg)!important;
+            }
+        }
+    }
+    &-header {
+        background-color: var(--bg-2);
+        color: var(--text);
+        .background.cover {
+            background: var(--bg-2);
+        }
+        .fileArea {
+            .straight.bottom.edge::before {
+                background: var(--bg-2);
+            }
+            .straight.bottom.edge::after {
+                background: var(--bg);
+            }
+            .info.bubble {
+                background-color: var(--bg-2);
+                color: var(--text);
+            }
+        }
+        .counters {
+            color: var(--text);
+        }
+        .publish.options {
+            .ui.segment {
+                background-color: var(--bg);
+                color: var(--text);
+            }
+        }
+        .explanation.pointer:after {
+            background: var(--bg-2);
+        }
+    }
+}
+
+.ui.segment {
+    background-color: var(--bg-2);
+    color: var(--text);
+    box-shadow: 0px 0px 0px 1px rgb(255 255 255 / 53%);
+}
+
+.ui.menu {
+    background-color: var(--bg);
+    color: var(--text);
+    box-shadow: 0px 0px 0px 1px rgb(255 255 255 / 59%);
+    .item {
+        color: var(--text);
+    }
+}
+
+.ui.basic.button,
+.ui.bare.icon.button {
+    background-color: var(--bg);
+    color: var(--text)!important;
+}
+
+.ui.checkbox label {
+    color: var(--text);
+}
+
+.ui.form .field > label {
+    color: var(--text);
+}
+
+.ui.attached.header {
+    background-color: var(--bg-2);
+}
+
+.vue-slider-component .vue-slider-tooltip {
+    color: var(--text)!important;
+}
+
+.unobtrusive, .unobtrusive .link {
+    color: var(--text);
+    opacity: 0.5;
+}
+
+img.emoji {
+    filter: brightness(8.5);
+}
+
+.markdown-body pre {
+    background-color: var(--bg);
+    color: var(--text)
+}
+
+.markdown-body {
+    color: var(--text);
+}
+
+.markdown-body blockquote,
+.ui.checkbox input[disabled] ~ label  {
+    color: var(--text);
+    opacity: 0.5;
+}
+
+.multiselect .multiselect__tags, 
+.multiselect .multiselect__select, 
+.multiselect .multiselect__single,
+.multiselect .multiselect__option, 
+.multiselect .multiselect__option--selected {
+    background-color: var(--bg);
+    color: var(--text);
+}
+.multiselect .multiselect__option--highlight {
+    background-color: var(--bg-2);
+}
+
+.markdown-body img {
+    background-color: var(--bg-2);
+}
+
+.hljs {
+    color: var(--text);
+    background: var(--bg-2);
+
+    .hljs-comment {
+        /* prettylights-syntax-comment */
+        color: #ffffff;
+    }
+}

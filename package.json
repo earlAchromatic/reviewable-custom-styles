@@ -1,0 +1,35 @@
+{
+  "name": "reviewable-custom-styles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "postcss ./main.css -o ./dist/dark-mode.css -w",
+    "build": "postcss ./main.css -o ./dist/dark-mode.css",
+    "dev:dark": "postcss ./dark-mode.css -o ./dist/dark-mode.css -w",
+    "build:dark": "postcss ./dark-mode.css -o ./dist/dark-mode.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/earlAchromatic/reviewable-custom-styles.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/earlAchromatic/reviewable-custom-styles/issues"
+  },
+  "homepage": "https://github.com/earlAchromatic/reviewable-custom-styles#readme",
+  "dependencies": {
+    "autoprefixer": "^10.4.13",
+    "cssnano": "^5.1.14",
+    "postcss": "^8.4.19",
+    "postcss-cli": "^10.0.0",
+    "postcss-import": "^15.0.0",
+    "postcss-import-ext-glob": "^2.0.1",
+    "postcss-inline-svg": "^5.0.0",
+    "postcss-nested": "^6.0.0",
+    "postcss-simple-vars": "^7.0.1",
+    "sirv-cli": "^2.0.2"
+  }
+}
