@@ -7,7 +7,7 @@
     --diff-add: rgba(91, 220, 114, 0.208);
     --diff-remove: rgba(240, 92, 92, 0.208);
     --diff-bg: #44444424;
-    --revision-modified: #5c5c5b6e; /* #625f567d; */
+    --revision-modified: #858585a8; /* #625f567d; */
     --revision-added: #c1fbcd;
     --revision-removed: #ffb8b8;
     --text: white;
@@ -44,8 +44,19 @@
                         }
                         .file.title {
                             background-color: var(--bg-2);
-                            .filename.cell.header .path {
-                                color: var(--text);
+                            .filename.cell.header {
+                                .path {
+                                    color: var(--text);
+                                }
+                                .ui.bare.icon.button.copy {
+                                    background-color: var(--bg-2);
+                                }
+                            }
+                            .stats {
+                                background-color: #282828;
+                            }
+                            .stats.hidden {
+                                background-color: transparent;
                             }
                         }
                         .file.title:after {
@@ -144,7 +155,6 @@
                             }
                         }
                     }
-                    
                     .file.bottom.button {
                         background-color: var(--bg-2)!important;
                         color: var(--text)!important;
@@ -169,7 +179,8 @@
                 background-color: var(--text);
             }
         }
-        .discussion.wrapper, .bottom.feedback.wrapper {
+        .discussion.wrapper,
+         .bottom.feedback.wrapper {
             background-color: var(--bg-2);
             color: var(--text);
             .draft.bottom.tabular.menu {
@@ -201,6 +212,9 @@
             .dropdown {
                 .item {
                     color: var(--text);
+                    .icon {
+                        color: var(--text);
+                    }
                 }
                 .preface {
                     background-color: var(--bg-2);
@@ -208,17 +222,21 @@
                 .multiselect__content-wrapper {
                     background-color: var(--bg-2);
                 }
+                .notch {
+                    background-color: var(--bg-2);
+                }
             }
             .showhide.old.comments {
                 background-color: var(--bg-2);
                 color: var(--text);
-            }
-            .ui.bare.icon.button,
-            .ui.basic.icon.button,
-            .ui.basic.button {
-                background-color: var(--bg-2);
-                color: var(--text)!important;
-                box-shadow: 0px 0px 0px 1px rgb(255 255 255 / 24%) inset;
+                .ui.bare.icon.button {
+                    background-color: var(--bg-2);
+                    color: var(--text)!important;
+                    box-shadow: none;
+                }
+                .settings .ui.icon.button {
+                    box-shadow: 0px 0px 0px 1px rgb(255 255 255 / 24%) inset;
+                }
             }
             .draft.display.textarea,
             .draft.display.textarea .markdown-body {
@@ -246,6 +264,7 @@
                 background-color: var(--bg);
                 color: var(--text);
                 .icon.button {
+                    background-color: var(--bg);
                     color: var(--text)!important;
                 }
             }
@@ -271,6 +290,21 @@
             }
             .code.wrapper {
                 filter: var(--contrast);
+            }
+            .codeblock.wrapper {
+                .ui.basic.button {
+                    box-shadow: 0px 0px 0px 1px rgb(255 255 255 / 24%) inset;
+                }
+            }
+        }
+        .codeblock {
+            .separator {
+                background-color: var(--bg);
+                color: var(--text);
+                .icon.button {
+                    background-color: var(--bg);
+                    color: var(--text)!important;
+                }
             }
         }
         .bottom.feedback.wrapper {
@@ -318,13 +352,22 @@
                 }
             }
             .prior.modified {
-                background-color: #5e5e5ea8;
+                background-color: #af9983a8;
             }
             .revision .watermark.icon {
                 opacity: 0.25;
             }
             .link.cell:hover, .filename.cell:hover + .reviewers {
                 background-color: var(--bg)!important;
+            }
+            .content .stats {
+                background-color: #282828;
+            }
+            .stats.hidden {
+                background-color: transparent;
+            }
+            .base.changes.only {
+                background-color: black;
             }
         }
         .status.bar {
@@ -504,6 +547,10 @@
 
 i.black.icon, .status.icon {
     color: var(--text)!important;
+}
+
+.ui.checkbox label:hover {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 img.emoji {
