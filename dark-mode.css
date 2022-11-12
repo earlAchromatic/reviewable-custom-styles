@@ -284,6 +284,11 @@
             }
         }
         .row.header.row, #file-matrix {
+            .matrix.header {
+                .title, th {
+                    color: var(--text);
+                }
+            }
             .revision.modified {
                 background-color: var(--revision-modified);
                 filter: var(--contrast);
@@ -378,8 +383,81 @@
         .explanation.pointer:after {
             background: var(--bg-2);
         }
+        .timeago {
+            color: var(--text);
+        }
     }
 }
+
+/* /Reviews Dashboard */
+.open.reviews {
+    background: var(--bg);
+    .ui.table .row {
+        background: var(--bg);
+    }
+    .ui.table .row.odd {
+        background: var(--bg-2);
+    }
+}
+
+/* /Repos Dashboard */
+.connections {
+    background: var(--bg);
+    .repository {
+        .inline.field {
+            color: var(--text);
+        }
+        .review.count {
+            color: var(--text);
+        }
+    }
+    .owner, .sticky.owner {
+        background: var(--bg-2);
+        color: var(--text);
+        .current.subscription {
+            color: var(--text);
+        }
+        .action.buttons .button:not(.green) {
+            color: var(--bg-2)!important;
+        }
+    }
+    .condition.note {
+        color: var(--text);
+    }
+    .main.group .inline.field label,
+    .main.group .inline.fields label {
+        color: var(--text)!important;
+    }
+    .repo.settings.panel .ui.header {
+        color: var(--text);
+    }
+    .name > span {
+        color: var(--text)!important;
+    }
+    .result.field .output {
+        background: var(--bg);
+        color: var(--text);
+    }
+    .state.field .state.fetcher {
+        color: var(--text);
+    }
+    .ui.buttons .or:after {
+        border-top: 0.5em solid var(--bg);
+        border-bottom: 0.5em solid var(--bg);
+    }
+    .cancel.button {
+        color: var(--bg-2)!important;
+    }
+}
+
+
+/* General */
+.link.cell:hover {
+    background: var(--bg)!important;
+    filter: contrast(0.75);
+}
+
+/* Semantic UI */
 
 .ui.segment {
     background-color: var(--bg-2);
@@ -412,6 +490,7 @@
 
 .ui.attached.header {
     background-color: var(--bg-2);
+    color: var(--text);
 }
 
 .vue-slider-component .vue-slider-tooltip {
@@ -421,6 +500,10 @@
 .unobtrusive, .unobtrusive .link {
     color: var(--text);
     opacity: 0.5;
+}
+
+i.black.icon, .status.icon {
+    color: var(--text)!important;
 }
 
 img.emoji {
@@ -457,6 +540,8 @@ img.emoji {
 .markdown-body img {
     background-color: var(--bg-2);
 }
+
+/* HLJS overrides */
 
 .hljs {
     color: var(--text);
