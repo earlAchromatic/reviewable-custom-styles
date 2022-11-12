@@ -6,7 +6,7 @@
       $bg-2: #464646;
     --diff-add: rgba(91, 220, 114, 0.208);
     --diff-remove: rgba(240, 92, 92, 0.208);
-    --diff-bg: #44444424;
+    --diff-bg: #0000006b;
     --revision-modified: #858585a8; /* #625f567d; */
     --revision-added: #c1fbcd;
     --revision-removed: #ffb8b8;
@@ -273,12 +273,20 @@
                 .role {
                     background-color: var(--bg-2);
                 }
+                .default.disposition {
+                    .blank {
+                        color: black;
+                    }
+                }
             }
             .sentiments {
                 background-color: var(--bg);
                 color: var(--text);
                 .avatar.category a, 
                 .avatar.category a:visited, .empty {
+                    color: var(--text);
+                }
+                .category i.icon {
                     color: var(--text);
                 }
             }
@@ -428,6 +436,11 @@
         }
         .timeago {
             color: var(--text);
+        }
+        .top.discussions {
+            .ui.basic.button {
+                box-shadow: 0px 0px 0px 1px rgb(255 255 255 / 24%) inset;
+            }
         }
     }
 }
@@ -595,7 +608,6 @@ img.emoji {
     background: var(--bg-2);
 
     .hljs-comment {
-        /* prettylights-syntax-comment */
         color: #ffffff;
     }
 }
