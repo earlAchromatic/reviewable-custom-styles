@@ -1,0 +1,73 @@
+:root,
+::after,
+::before {
+    --diff-add: 33, 150, 243;
+    --diff-remove: 255, 235, 59;
+
+    /* These get overridden in reviewable.js */
+    --one-column-add-remove-deltas-alpha: 0.3;
+    --one-column-base-add-remove-deltas-alpha: 0.15;
+    --add-remove-alt-content-alpha: 0.2;
+    --add-remove-base-whitespace-alpha: 0.1;
+}
+
+.review-page .review {
+  &-component{
+    .files.content {
+      .file.root {
+        .file {
+          .one.column.diff {
+            .diff.line {
+              .left.line.content .delta,
+              .code.inline.diff .remove.line .delta {
+                background-color: rgba(--diff-remove, var(--one-column-add-remove-deltas-alpha));
+              }
+              .right.line.content .delta,
+              .code.inline.diff .add.line .delta {
+                background-color: rgba(--diff-add, var(--one-column-add-remove-deltas-alpha));
+              }
+              &.base, &.whitespace {
+                .right.line.content .delta {
+                  background-color: rgba(--diff-add, var(--one-column-base-add-remove-deltas-alpha));
+                }
+              }
+            }
+          }
+          .file.column.diff {
+            .diff.line {
+              &:not(.keep) .line.wrapper:not(.empty) {
+                .left.line.content,
+                .left.line.content .delta,
+                .code.inline.diff .remove.line, .code.inline.diff .remove.delta {
+                  background-color: rgba(var(--diff-remove), var(--add-remove-alt-content-alpha));
+                }
+                .right.line.content,
+                .right.line.content .delta,
+                .code.inline.diff .add.line, .code.inline.diff .add.delta {
+                  background-color: rgba(var(--diff-add), var(--add-remove-alt-content-alpha));
+                }
+              }
+              &.base:not(.keep) .line.wrapper:not(.empty),
+              &.whitespace:not(.keep) .line.wrapper:not(.empty) {
+                .left.line.content {
+                  background-color: rgba(var(--diff-remove), var(--add-remove-base-whitespace-alpha));
+                }
+                .right.line.content {
+                  background-color: rgba(var(--diff-add), var(--add-remove-base-whitespace-alpha));
+                }
+              }
+              &.base, &.whitespace {
+                .left.line.content .delta {
+                  background-color: rgba(var(--diff-remove), var(--add-remove-base-whitespace-alpha));
+                }
+                .right.line.content .delta {
+                  background-color: rgba(var(--diff-add), var(--add-remove-base-whitespace-alpha));
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

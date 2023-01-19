@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "postcss ./main.css -o ./dist/dark-mode.css -w",
-    "build": "postcss ./main.css -o ./dist/dark-mode.css",
-    "dev:dark": "postcss ./dark-mode.css -o ./dist/dark-mode.css -w",
-    "build:dark": "postcss ./dark-mode.css -o ./dist/dark-mode.css"
+    "serve" : "sirv dist -D",
+    "dev": "postcss src/*.css --dir dist -w",
+    "build": "postcss ./main.css -o ./dist/dark-mode.css"
   },
   "repository": {
     "type": "git",

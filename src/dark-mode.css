@@ -1,6 +1,7 @@
 :root,
 ::after,
-::before {
+::before,
+.custom-styles {
     --bg: #5a5a5a; /* replaces the light grey */
     --bg-2: #464646; /*  replaces white */ /*#8d8d8d*/
       $bg-2: #464646;
