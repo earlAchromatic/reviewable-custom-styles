@@ -1,78 +1,77 @@
-html {
-  .one.column.file.diff .left.line.content:not(:hover) .delta {
-    text-decoration: line-through;
-    text-decoration-color: var(--text-color-normal);
+.column.file.diff .left.line.content:not(:hover) .delta,
+.column.file.diff .diff.line.replace .left.line.content:not(:hover) {
+  text-decoration: line-through;
+  text-decoration-color: var(--text-color-normal);
+}
+
+.revision::after, .chip.square.cell::after {
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  font-size: xx-small;
+}
+
+.header.row .revision::after {
+  display: none;
+}
+
+.header.row:hover .filename.cell:not(:hover) ~ .chip.cell:not(:hover) ~ .revcell .revision {
+  &::after {
+    display: inline-block;
+  }
+}
+
+.revision.added::after {
+  content: "C"; /* created */
+}
+
+.revision.modified::after {
+  content: "M"; /* modified */
+}
+
+.revision.removed::after {
+  content: "D"; /* deleted */
+}
+
+.revision.swatch::after {
+  inset: 0;
+}
+
+.chip.square.cell {
+  position: relative;
+
+  &:has(.done):not(:hover)::after {
+    opacity: 0;
   }
 
-  .revision::after, .chip.square.cell::after {
-    position: absolute;
-    right: 1px;
-    bottom: 1px;
-    font-size: xx-small;
+  &:not(:has(.green, .red))::after {
+    content: "N"; /* no action needed */
   }
 
-  .header.row .revision::after {
-    display: none;
+  &:has(.red)::after {
+    content: "R"; /* review needed */
   }
 
-  .header.row:hover .filename.cell:not(:hover) ~ .chip.cell:not(:hover) ~ .revcell .revision {
-    &::after {
-      display: inline-block;
-    }
+  &:has(.green)::after {
+    content: "D"; /* draft */
   }
+}
 
-  .revision.added::after {
-    content: "C"; /* created */
-  }
+.orange.circle.outline.icon::after {
+  content: "!";
+  position: absolute;
+  right: -3px;
+  opacity: 1;
+  color: var(--text-color-normal);
+}
 
-  .revision.modified::after {
-    content: "M"; /* modified */
-  }
-
-  .revision.removed::after {
-    content: "D"; /* deleted */
-  }
-
-  .revision.swatch::after {
-    inset: 0;
-  }
-
-  .chip.square.cell {
-    position: relative;
-
-    &:has(.done):not(:hover)::after {
-      opacity: 0;
-    }
-
-    &:not(:has(.green, .red))::after {
-      content: "N"; /* no action needed */
-    }
-
-    &:has(.red)::after {
-      content: "R"; /* review needed */
-    }
-
-    &:has(.green)::after {
-      content: "D"; /* draft */
-    }
-  }
-
-  .orange.circle.outline.icon::after {
+.role.block-resolving {
+  &::after {
     content: "!";
     position: absolute;
-    right: -3px;
-    opacity: 1;
-    color: var(--text-color-normal);
-  }
-
-  .role.block-resolving {
-    &::after {
-      content: "!";
-      position: absolute;
-      right: -8px;
-      bottom: 4px;
-      font-size: large;
-    }
+    right: -8px;
+    bottom: 4px;
+    font-size: large;
   }
 }
 
